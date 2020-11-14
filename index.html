@@ -3,6 +3,7 @@
   <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- gesture controll for the model -->
   <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
 
   <script>
@@ -42,26 +43,30 @@
   </style>
 
   <body style="margin: 0px; overflow: hidden">
+    <!-- UI button -->
     <div class="buttons">
       <button class="say-hi-button">SAY HI!</button>
     </div>
+    <!-- starting a-frame scene -->
     <a-scene
       embedded
       arjs
       gesture-detector
       vr-mode-ui="enabled: false"
       gesture-detector
-      id="scene"
     >
+      <!-- adding model as asset -->
       <a-assets>
         <a-asset-item id="plane" src="/plane.gltf"></a-asset-item>
       </a-assets>
+      <!-- adding marker -->
       <a-marker
         preset="hiro"
         raycaster="objects: .clickable"
         emitevents="true"
         cursor="fuse: false; rayOrigin: mouse;"
       >
+        <!-- adding model -->
         <a-entity
           position="0 1 0"
           scale="0.1 0.1 0.1"
