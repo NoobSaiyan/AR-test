@@ -45,15 +45,29 @@
     <div class="buttons">
       <button class="say-hi-button">SAY HI!</button>
     </div>
-    <a-scene embedded arjs>
+    <a-scene
+      embedded
+      arjs
+      gesture-detector
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    >
       <a-assets>
         <a-asset-item id="plane" src="/plane.gltf"></a-asset-item>
       </a-assets>
-      <a-marker preset="hiro">
+      <a-marker
+        preset="hiro"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+      >
         <a-entity
           position="0 1 0"
           scale="0.1 0.1 0.1"
           gltf-model="#plane"
+          class="clickable"
+          gesture-handler
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
